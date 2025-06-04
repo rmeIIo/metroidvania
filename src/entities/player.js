@@ -104,6 +104,14 @@ export function makePlayer(k) {
           })
         );
       },
+      disableControls() {
+        for (const handler of this.controlHandlers) {
+          handler.cancel();
+        }
+      },
+      respawnIfOutOfBounds(boundValue, destinationName, previousSceneDate = {exitName: null}) {
+        // TODO
+      },
       setEvents() {
         this.onFall(() => {
           this.play("fall");
