@@ -1,120 +1,142 @@
-# Metroidvania Browser Game
+# 🕹️ Metroidvania Browser Game
 
-A retro-style Metroidvania platformer built with Kaboom.js, featuring classic platforming mechanics, combat, and exploration elements. Face dangerous drones and challenging bosses as you navigate through a mysterious factory.
+Um platformer retrô estilo Metroidvania feito com **Kaboom.js**. Combate, exploração e desafios em uma fábrica misteriosa cheia de perigos — drones, armadilhas e chefões prontos para acabar com você.
 
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Technical Stack](#technical-stack)
-- [Project Structure](#project-structure)
-- [Controls](#controls)
-- [Getting Started](#getting-started)
-- [Development](#development)
+---
 
-## Overview
+## 📚 Sumário
 
-This browser-based Metroidvania game combines fluid platforming mechanics with engaging combat in a multi-room environment. Players must navigate through a hostile factory, defeating enemies and collecting power-ups while trying to escape.
+- [Visão Geral](#visão-geral)
+- [Recursos do Jogo](#recursos-do-jogo)
+- [Stack Técnico](#stack-técnico)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Controles](#controles)
+- [Como Rodar](#como-rodar)
+- [Ambiente de Desenvolvimento](#ambiente-de-desenvolvimento)
 
-## Features
+---
 
-### Core Gameplay
-- Fluid platforming with double-jump abilities
-- Combat system with sword attacks
-- Health system with collectible cartridges
-- Multiple interconnected rooms to explore
+## 🔍 Visão Geral
 
-### Enemies & Challenges
-- Automated drone enemies with attack patterns
-- Challenging boss battles
-- Dynamic camera system with smooth transitions
-- Interactive notification system for game events
+Um game 2D de ação e aventura direto no navegador. Mistura exploração com combate em várias salas conectadas. Você joga como um personagem tentando escapar de uma fábrica hostil, coletando power-ups e enfrentando inimigos pelo caminho.
 
-### Technical Features
-- Sprite-based animation system
-- Collision detection and physics
-- JSON-based level design
-- State management for game progression
+---
 
-## Technical Stack
+## 🎮 Recursos do Jogo
 
-- **Game Engine**: [Kaboom.js](https://kaboomjs.com/)
-- **Language**: Vanilla JavaScript (ES Modules)
-- **Rendering**: HTML5 Canvas
-- **Level Design**: Custom JSON format
-- **Assets**: Custom pixel art sprites and sound effects
+### Jogabilidade
+- Plataforma fluida com pulo duplo
+- Sistema de combate com espada
+- Sistema de vida com cartuchos de energia
+- Várias salas interconectadas com transições suaves
 
-## Project Structure
+### Inimigos e Desafios
+- Drones automatizados com padrões de ataque
+- Chefões desafiadores
+- Câmera dinâmica e responsiva
+- Sistema de notificações in-game (avisos, alertas etc.)
+
+### Técnicas de Desenvolvimento
+- Animações com sprites customizados
+- Física e detecção de colisões
+- Fases desenhadas em JSON
+- Sistema de estado para progressão do jogo
+
+---
+
+## 🛠️ Stack Técnico
+
+- **Engine**: [Kaboom.js](https://kaboomjs.com/)
+- **Linguagem**: JavaScript (ES Modules)
+- **Renderização**: HTML5 Canvas
+- **Mapas**: Formato JSON customizado
+- **Assets**: Pixel art + efeitos sonoros próprios
+
+---
+
+## 📁 Estrutura do Projeto
 
 ```
 ├── assets/
-│   ├── sprites/         # Game sprite sheets
-│   ├── sounds/         # Sound effects and music
-│   └── glyphmesss.ttf  # Custom font
+│   ├── sprites/          → Sprites do jogo
+│   ├── sounds/           → Efeitos sonoros e música
+│   └── glyphmesss.ttf    → Fonte customizada
 ├── src/
-│   ├── entities/       # Game entity implementations
-│   ├── scenes/         # Room and level logic
-│   ├── state/         # Global state management
-│   ├── ui/            # User interface components
-│   ├── kaboomLoader.js # Engine configuration
-│   └── main.js        # Game entry point
-├── maps/              # Level data and designs
-├── lib/               # External libraries
-└── index.html         # Entry HTML file
+│   ├── entities/         → Entidades (player, inimigos etc.)
+│   ├── scenes/           → Lógica de fases/salas
+│   ├── state/            → Estado global do jogo
+│   ├── ui/               → Componentes de interface
+│   ├── kaboomLoader.js   → Configuração do Kaboom
+│   └── main.js           → Entrada principal do jogo
+├── maps/                 → Dados dos mapas
+├── lib/                  → Bibliotecas externas
+└── index.html            → Arquivo HTML principal
 ```
 
-## Controls
+---
 
-| Key           | Action                    |
-|---------------|---------------------------|
-| Arrow Keys    | Move left/right           |
-| X             | Jump (press twice for double jump) |
-| Z             | Attack (when grounded)     |
-| Enter         | Start game (at title)      |
+## ⌨️ Controles
 
-## Getting Started
+| Tecla        | Ação                              |
+|--------------|-----------------------------------|
+| → / ←        | Movimentar                        |
+| X            | Pular (duplo toque = pulo duplo)  |
+| Z            | Atacar com espada                 |
+| Enter        | Iniciar jogo (na tela de título)  |
 
-1. Clone the repository:
+---
+
+## 🚀 Como Rodar
+
+1. Clone o repositório:
 ```bash
 git clone https://github.com/rmeIIo/metroidvania.git
 cd metroidvania
 ```
 
-2. Serve the project using any HTTP server. For example, using Python:
+2. Rode com um servidor local. Exemplos:
+
+**Usando Python**:
 ```bash
-# Python 3
 python -m http.server 8000
 ```
 
-   Or using npm's serve package:
+**Ou com o `serve` via npm**:
 ```bash
-# Using npm
 npm install -g serve
 serve
 ```
 
-3. Open your browser and navigate to `http://localhost:8000` (Python) or `http://localhost:5000` (serve)
-
-## Development
-
-### Prerequisites
-- Modern web browser with ES Modules support
-- Local development server (Python's SimpleHTTPServer, live-server, etc.)
-
-### Running in Development Mode
-1. Make sure you're in the project directory
-2. Start a local development server
-3. Open your browser to the local server address
-4. The game will start in the intro scene
-
-### Map Creation
-Maps are created using JSON format with multiple layers:
-- Background layer
-- Collision layer
-- Entity placement layer
-- Camera zones
-- Exit points
+3. Acesse no navegador:
+- Python: `http://localhost:8000`
+- Serve: `http://localhost:5000`
 
 ---
 
-Project built with ❤️ using Kaboom.js
+## ⚙️ Ambiente de Desenvolvimento
 
+### Requisitos
+- Navegador moderno com suporte a ES Modules
+- Servidor local simples (ex: live-server, Python HTTP server)
+
+### Como rodar em modo dev
+1. Entre na pasta do projeto
+2. Inicie o servidor local
+3. Acesse pelo navegador
+4. O jogo começa na cena de introdução
+
+---
+
+## 🗺️ Criação de Mapas
+
+Os mapas são definidos em JSON e organizados por camadas:
+
+- Fundo (background)
+- Colisões
+- Entidades (player, inimigos, pickups)
+- Zonas de câmera
+- Pontos de saída (para troca de salas)
+
+---
+
+> Feito com carinho e algumas noites viradas usando **Kaboom.js**
