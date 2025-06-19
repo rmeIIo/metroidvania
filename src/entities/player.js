@@ -114,11 +114,11 @@ export function makePlayer(k) {
       respawnIfOutOfBounds(
         boundValue,
         destinationName,
-        previousSceneDate = { exitName: null }
+        previousSceneData = { exitName: null }
       ) {
         k.onUpdate(() => {
           if (this.pos.y > boundValue) {
-            k.go(destinationName, previousSceneDate);
+            k.go(destinationName, previousSceneData);
           }
         });
       },
