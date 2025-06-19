@@ -116,7 +116,11 @@ export function makePlayer(k) {
         destinationName,
         previousSceneDate = { exitName: null }
       ) {
-        // TODO:
+        k.onUpdate(() => {
+          if (this.pos.y > boundValue) {
+            k.go(destinationName, previousSceneDate);
+          }
+        });
       },
       setEvents() {
         this.onFall(() => {
@@ -161,7 +165,7 @@ export function makePlayer(k) {
       },
       enableDoubleJump() {
         this.numJumps = 2;
-      }
+      },
     },
   ]);
 }
