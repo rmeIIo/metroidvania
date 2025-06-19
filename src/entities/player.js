@@ -6,14 +6,9 @@ export function makePlayer(k) {
   return k.make([
     k.pos(),
     k.sprite("player"),
-    k.area({
-      shape: new k.Rect(k.vec2(0, 18), 12, 12),
-    }),
+    k.area({ shape: new k.Rect(k.vec2(0, 18), 12, 12) }),
     k.anchor("center"),
-    k.body({
-      mass: 100,
-      jumpForce: 320,
-    }),
+    k.body({ mass: 100, jumpForce: 320 }),
     k.doubleJump(state.current().isDoubleJumpUnlocked ? 2 : 1),
     k.opacity(),
     k.health(state.current().playerHp),
@@ -26,9 +21,9 @@ export function makePlayer(k) {
         this.pos.y = y;
       },
       enablePassthrough() {
-        this.onBeforePhysicsResolve((colission) => {
-          if (colission.target.is("passthrough") && this.isJumping()) {
-            colission.preventResolution();
+        this.onBeforePhysicsResolve((collision) => {
+          if (collision.target.is("passthrough") && this.isJumping()) {
+            collision.preventResolution();
           }
         });
       },
@@ -50,15 +45,13 @@ export function makePlayer(k) {
               this.isAttacking = true;
               this.add([
                 k.pos(this.flipX ? -25 : 0, 10),
-                k.area({
-                  shape: new k.Rect(k.vec2(0), 25, 10),
-                }),
+                k.area({ shape: new k.Rect(k.vec2(0), 25, 10) }),
                 "sword-hitbox",
               ]);
               this.play("attack");
 
               this.onAnimEnd((anim) => {
-                if (anim == "attack") {
+                if (anim === "attack") {
                   const swordHitbox = k.get("sword-hitbox", {
                     recursive: true,
                   })[0];
@@ -100,17 +93,18 @@ export function makePlayer(k) {
               this.curAnim() !== "jump" &&
               this.curAnim() !== "fall" &&
               this.curAnim() !== "attack"
-            ) {
+            )
               this.play("idle");
-            }
           })
         );
       },
+
       disableControls() {
         for (const handler of this.controlHandlers) {
           handler.cancel();
         }
       },
+
       respawnIfOutOfBounds(
         boundValue,
         destinationName,
@@ -122,19 +116,20 @@ export function makePlayer(k) {
           }
         });
       },
+
       setEvents() {
+        // when player falls after jumping
         this.onFall(() => {
           this.play("fall");
         });
 
+        // when player falls off a platform
         this.onFallOff(() => {
           this.play("fall");
         });
-
         this.onGround(() => {
           this.play("idle");
         });
-
         this.onHeadbutt(() => {
           this.play("fall");
         });
@@ -163,6 +158,7 @@ export function makePlayer(k) {
           }
         });
       },
+
       enableDoubleJump() {
         this.numJumps = 2;
       },

@@ -24,7 +24,6 @@ export function makeDrone(k, initialPos) {
 
         this.onStateEnter("patrol-right", async () => {
           await k.wait(3);
-
           if (this.state === "patrol-right") this.enterState("patrol-left");
         });
 
@@ -33,14 +32,12 @@ export function makeDrone(k, initialPos) {
             this.enterState("alert");
             return;
           }
-
           this.flipX = false;
           this.move(this.speed, 0);
         });
 
         this.onStateEnter("patrol-left", async () => {
           await k.wait(3);
-
           if (this.state === "patrol-left") this.enterState("patrol-right");
         });
 
@@ -49,7 +46,6 @@ export function makeDrone(k, initialPos) {
             this.enterState("alert");
             return;
           }
-
           this.flipX = true;
           this.move(-this.speed, 0);
         });
@@ -77,6 +73,7 @@ export function makeDrone(k, initialPos) {
           );
         });
       },
+
       setEvents() {
         const player = k.get("player", { recursive: true })[0];
 
@@ -103,6 +100,8 @@ export function makeDrone(k, initialPos) {
           this.hurt(1);
         });
 
+        // event defined by default by the health component
+        // when health is removed
         this.on("hurt", () => {
           if (this.hp() === 0) {
             this.trigger("explode");
@@ -110,7 +109,7 @@ export function makeDrone(k, initialPos) {
         });
 
         this.onExitScreen(() => {
-          this.pos = initialPos;
+          if (this.pos.dist(initialPos) > 400) this.pos = initialPos;
         });
       },
     },
